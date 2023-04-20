@@ -1,4 +1,4 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction , createReducer} from "@reduxjs/toolkit";
 
 const changeAlias = createAction('change Alias');
 const changeName = createAction('change name');

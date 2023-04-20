@@ -1,8 +1,22 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { actions } from "../features/profile";
 
 const Profile = () => {
     const [alias, setAlias] = useState('');
     const [name, setName] = useState('');
+    const dispatch = useDispatch();
+
+    const handleSave = () => {
+        dispatch(actions.changeAlias(alias));
+        dispatch(actions.changeName(name));
+    }
+
+    const handleReset = () => {
+        dispatch(actions.resetProfile());
+        setAlias('');
+        setName('');
+    }
 
     return (
         <div>
@@ -17,8 +31,8 @@ const Profile = () => {
                 <input type="text" value={name}
                     onChange={e => setName(e.target.value) } />
             </div>
-            <button>Save</button>
-            <button>Reset</button>
+            <button onClick={handleSave}>Save</button>
+            <button onClick={handleReset}>Reset</button>
         </div>
     )
 }
