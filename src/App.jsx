@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Välkommen, {alias} </h2>
+      <h2>Välkommen, {alias} </h2> 
 
       <Profile />
       <Counter />

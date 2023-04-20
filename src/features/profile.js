@@ -11,19 +11,26 @@ const initialState = {
     name : ''
 }
 
-const reducer = createReducer(initialState, {
-    [changeAlias] : (state, action) => (
-        {
-            alias : action.payload,
-            name : state.name            
-        }
-    ),
-    [changeName] : (state, action) => (
-        {...state, name: action.payload}
-    ),
-    [resetProfile] : (state, action) => (
-        initialState
-    )
-})
+// const reducer = createReducer(initialState, {
+//     [changeAlias] : (state, action) => (
+//         {
+//             alias : action.payload,
+//             name : state.name            
+//         }
+//     ),
+//     [changeName] : (state, action) => (
+//         {...state, name: action.payload}
+//     ),
+//     [resetProfile] : (state, action) => (
+//         initialState
+//     )
+// })
+
+const reducer = createReducer(initialState, builder => {
+    builder
+        .addCase(changeAlias, (state, action) => ({...state, alias: action.payload}))
+        .addCase(changeName, (state, action) => ({...state, name: action.payload}))
+        .addCase(resetProfile, (state, action) => initialState )
+});
 
 export { actions, reducer};
